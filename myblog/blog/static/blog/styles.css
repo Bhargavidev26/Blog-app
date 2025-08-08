@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(to right, #ffe0c3, #e8d0ff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4b3869;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    background-color: white;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    color: #4b3869;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #a16ae8;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #cdaefc;
+    color: #4b3869;
+}
+
+.btn-secondary {
+    background-color: #5e4b8b;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #8e79b7;
+}
+
+a {
+    color: #4b3869;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

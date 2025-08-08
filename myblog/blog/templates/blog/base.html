@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Gradient background */
+        body {
+            background: linear-gradient(to right, #ffe0c3, #e8d0ff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main content container */
+        .container {
+            background-color:#f7d9e7;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            width: 95%;
+            max-width: 960px;
+            transition: all 0.3s ease;
+        }
+
+        /* Header section with user greeting */
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Anchor tag styles */
+        a {
+            color: #5a189a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #7209b7;
+        }
+
+        /* Buttons */
+        .btn-outline-primary:hover {
+            background-color: #5a189a;
+            color: white;
+            border-color: #5a189a;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #007f5f;
+            color: white;
+            border-color: #007f5f;
+        }
+
+        /* Horizontal line */
+        hr {
+            border-top: 2px solid #dee2e6;
+        }
+
+        /* Fade-in effect */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="header">
+            {% if user.is_authenticated %}
+                <p class="text-end">Hi <strong>{{ user.username }}</strong> |
+                    <a href="{% url 'logout' %}" class="text-danger">Logout</a>
+                </p>
+            {% else %}
+                <div class="text-end">
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm me-2">Login</a>
+                    <a href="{% url 'register' %}" class="btn btn-outline-success btn-sm">Register</a>
+                </div>
+            {% endif %}
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
